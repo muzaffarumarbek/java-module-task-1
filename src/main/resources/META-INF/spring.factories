@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.epam.javamoduletask1.config.H2AutoConfiguration
