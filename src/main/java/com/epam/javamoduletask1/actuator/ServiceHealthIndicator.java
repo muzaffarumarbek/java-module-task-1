@@ -16,7 +16,6 @@ public class ServiceHealthIndicator implements ReactiveHealthIndicator {
     }
 
     private Mono<Health> checkDownstreamServiceHealth() {
-        // we could use WebClient to check health reactively
         return Mono.just(new Health.Builder().up().build());
     }
 }
