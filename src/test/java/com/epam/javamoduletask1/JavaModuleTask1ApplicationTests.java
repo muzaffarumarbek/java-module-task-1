@@ -27,7 +27,7 @@ class JavaModuleTask1ApplicationTests {
     public void whenSaveUser() {
         User user = new User("Muzaffar", "muzaffar@gmail.com");
         userRepository.save(user);
-        List<User> users = (List<User>) userRepository.findAll();
+        List<User> users = userRepository.findAll();
         assertThat(users.size()).isEqualTo(1);
 
     }
