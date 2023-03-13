@@ -5,13 +5,19 @@ import com.epam.javamoduletask1.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@RunWith(SpringRunner.class)
 @SpringBootTest(classes = JavaModuleTask1Application.class)
-@EnableJpaRepositories(basePackages = { "com.epam.javamoduletask1.repository" })
+@DataJpaTest
 class JavaModuleTask1ApplicationTests {
 
     @Autowired
@@ -19,8 +25,10 @@ class JavaModuleTask1ApplicationTests {
 
     @Test
     public void whenSaveUser() {
-        User user = new User("muzaffar.umar@gmail.com");
+        User user = new User("Muzaffar", "muzaffar@gmail.com");
         userRepository.save(user);
+        List<User> users = (List<User>) userRepository.findAll();
+        assertThat(users.size()).isEqualTo(1);
 
     }
 }
